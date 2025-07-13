@@ -45,12 +45,28 @@ export default function HistoryPage() {
 	};
 
 	return (
-		<div className="history-page">
+		<div className="history-page px-4 py-8 max-w-5xl mx-auto">
+			<div className="flex items-center justify-between mb-6">
+				<button
+					onClick={() => navigate("/")}
+					className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+				>
+					← Go Back
+				</button>
+				<h2 className="text-2xl font-semibold text-center flex-grow">
+					📜 Saved Forecasts
+				</h2>
+				<div style={{ width: "120px" }} /> {/* For symmetry */}
+			</div>
+
 			<h2>📜 Saved Forecasts</h2>
 
-			<div className="forecast-grid">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
 				{forecasts.map((item) => (
-					<div key={item._id} className="forecast-card">
+					<div
+						key={item._id}
+						className="bg-slate-800 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all"
+					>
 						<h3>{item.location}</h3>
 						<p>
 							🗓️ {item.dateRange.start.split("T")[0]} →{" "}
@@ -59,8 +75,15 @@ export default function HistoryPage() {
 
 						{editingId === item._id ? (
 							<div>
+								<button
+									onClick={() => handleSave(item._id)}
+									className="mb-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+								>
+									💾 Save
+								</button>
 								<p>
 									<input
+										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
 										value={editedData.temp}
 										onChange={(e) =>
 											setEditedData({ ...editedData, temp: e.target.value })
@@ -69,6 +92,7 @@ export default function HistoryPage() {
 								</p>
 								<p>
 									<input
+										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
 										value={editedData.humidity}
 										onChange={(e) =>
 											setEditedData({ ...editedData, humidity: e.target.value })
@@ -77,6 +101,7 @@ export default function HistoryPage() {
 								</p>
 								<p>
 									<input
+										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
 										value={editedData.condition}
 										onChange={(e) =>
 											setEditedData({
@@ -86,7 +111,6 @@ export default function HistoryPage() {
 										}
 									/>
 								</p>
-								<button onClick={() => handleSave(item._id)}>Save</button>
 							</div>
 						) : (
 							<>
@@ -110,14 +134,16 @@ export default function HistoryPage() {
 						)}
 
 						<div style={{ marginTop: "1rem" }}>
-							<button onClick={() => handleEdit(item)}>Edit</button>
+							<button
+								onClick={() => handleEdit(item)}
+								className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+							>
+								Edit
+							</button>
+
 							<button
 								onClick={() => handleDelete(item._id)}
-								style={{
-									marginLeft: "0.5rem",
-									background: "crimson",
-									color: "white",
-								}}
+								className="px-3 py-1 rounded bg-red-600 text-white ml-3 hover:bg-red-700 transition"
 							>
 								Delete
 							</button>
