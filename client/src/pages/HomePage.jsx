@@ -25,6 +25,7 @@ export default function App() {
 	const [showAboutPM, setShowAboutPM] = useState(false);
 	const [showHistory, setShowHistory] = useState(false);
 	const navigate = useNavigate();
+	const isExpanded = Boolean(weatherData && forecastData);
 
 	// ✅ useEffect to change body background when expanded
 	useEffect(() => {
@@ -148,37 +149,71 @@ export default function App() {
 		<div className="page-wrapper">
 			<div className={`app-container ${weatherData ? "expanded" : ""}`}>
 				<h1 className="app-title">🌤️ Weather Forecast App</h1>
-
-				<div className="button-right-row">
+				<div className="button-row" style={{ marginTop: "1rem" }}>
 					<button onClick={() => navigate("/history")}>View History</button>
 				</div>
-				{showHistory && (
-					<SavedForecasts onClose={() => setShowHistory(false)} />
+				{!isExpanded ? (
+					<div className="text-gray-800">
+						<ul className="bullet-list left-aligned-list">
+							<li>Enter a location to see the current weather.</li>
+							<li>View the 5-day weather forecast.</li>
+							<li>Access saved history for past forecasts.</li>
+							<li>Check hourly updates for precision planning.</li>
+						</ul>
+
+						<form
+							onSubmit={handleSearch}
+							className="search-row"
+							style={{ marginTop: "1rem" }}
+						>
+							<SearchBar input={input} setInput={setInput} />
+							<button type="submit">Search</button>
+							<button type="button" onClick={handleUseMyLocation}>
+								Use My Location
+							</button>
+						</form>
+					</div>
+				) : (
+					<>
+						<h2 className="section-title">🌤️ Current Weather</h2>
+						<form onSubmit={handleSearch} className="search-row">
+							<SearchBar input={input} setInput={setInput} />
+							<button type="submit">Search</button>
+							<button type="button" onClick={handleUseMyLocation}>
+								Use My Location
+							</button>
+						</form>
+					</>
 				)}
 
-				<h2 className="section-title">🌤️ Current Weather</h2>
-
-				<form onSubmit={handleSearch} className="search-row">
-					<SearchBar input={input} setInput={setInput} />
-					<button type="submit">Search</button>
-					<button type="button" onClick={handleUseMyLocation}>
-						Use My Location
-					</button>
-				</form>
 				{weatherData && forecastData && (
 					<>
 						<div className="weather-map-container">
 							<WeatherCard data={weatherData} />
 							<MapView location={weatherData.location} />
 						</div>
-						<div style={{ textAlign: "center", margin: "1.5rem 0" }}>
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								gap: "1rem",
+								margin: "1.5rem 0",
+							}}
+						>
 							<button
 								className="toggle-hourly-btn"
 								onClick={() => setShowHourly((prev) => !prev)}
 							>
 								{showHourly ? "Hide Hourly Forecast" : "Show Hourly Forecast"}
 							</button>
+
+							<SaveForecastButton
+								location={weatherData.location}
+								current={weatherData}
+								forecastday={forecastData.forecastday}
+							/>
 						</div>
+
 						{showHourly && forecastData?.forecastday?.[0]?.hour && (
 							<HourlyForecast hourly={forecastData.forecastday[0].hour} />
 						)}
@@ -223,14 +258,6 @@ export default function App() {
 					</ul>
 					<button onClick={() => setShowAboutPM(false)}>Close</button>
 				</div>
-			)}
-
-			{weatherData && forecastData && (
-				<SaveForecastButton
-					location={weatherData.location}
-					current={weatherData}
-					forecastday={forecastData.forecastday}
-				/>
 			)}
 
 			<Footer

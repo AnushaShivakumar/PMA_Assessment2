@@ -15,6 +15,13 @@ export default function HistoryPage() {
 	useEffect(() => {
 		fetchForecasts();
 	}, []);
+	useEffect(() => {
+		document.body.classList.add("history-background");
+
+		return () => {
+			document.body.classList.remove("history-background");
+		};
+	}, []);
 
 	const fetchForecasts = async () => {
 		try {
@@ -45,7 +52,8 @@ export default function HistoryPage() {
 	};
 
 	return (
-		<div className="history-page px-4 py-8 max-w-5xl mx-auto">
+		<div className="history-page px-4 py-8 mx-auto">
+			<h1 className="forecast-header">🌤️ Weather Forecast App</h1>
 			<div className="flex items-center justify-between mb-6">
 				<button
 					onClick={() => navigate("/")}
@@ -56,61 +64,48 @@ export default function HistoryPage() {
 				<h2 className="text-2xl font-semibold text-center flex-grow">
 					📜 Saved Forecasts
 				</h2>
-				<div style={{ width: "120px" }} /> {/* For symmetry */}
+				<div style={{ width: "120px" }} />
 			</div>
-			<h2>📜 Saved Forecasts</h2>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+			<div className="history-grid">
 				{forecasts.map((item) => (
-					<div
-						key={item._id}
-						className="bg-slate-800 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all"
-					>
-						<h3>{item.location}</h3>
+					<div key={item._id} className="history-card">
+						<h3 className="location">{item.location}</h3>
 						<p>
 							🗓️ {item.dateRange.start.split("T")[0]} →{" "}
 							{item.dateRange.end.split("T")[0]}
 						</p>
 
 						{editingId === item._id ? (
-							<div>
+							<>
+								<input
+									className="edit-input"
+									value={editedData.temp}
+									onChange={(e) =>
+										setEditedData({ ...editedData, temp: e.target.value })
+									}
+								/>
+								<input
+									className="edit-input"
+									value={editedData.humidity}
+									onChange={(e) =>
+										setEditedData({ ...editedData, humidity: e.target.value })
+									}
+								/>
+								<input
+									className="edit-input"
+									value={editedData.condition}
+									onChange={(e) =>
+										setEditedData({ ...editedData, condition: e.target.value })
+									}
+								/>
 								<button
 									onClick={() => handleSave(item._id)}
-									className="mb-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+									className="btn-save"
 								>
 									💾 Save
 								</button>
-								<p>
-									<input
-										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
-										value={editedData.temp}
-										onChange={(e) =>
-											setEditedData({ ...editedData, temp: e.target.value })
-										}
-									/>
-								</p>
-								<p>
-									<input
-										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
-										value={editedData.humidity}
-										onChange={(e) =>
-											setEditedData({ ...editedData, humidity: e.target.value })
-										}
-									/>
-								</p>
-								<p>
-									<input
-										className="w-full px-3 py-2 mt-2 mb-3 rounded border border-gray-300 text-black"
-										value={editedData.condition}
-										onChange={(e) =>
-											setEditedData({
-												...editedData,
-												condition: e.target.value,
-											})
-										}
-									/>
-								</p>
-							</div>
+							</>
 						) : (
 							<>
 								<p>🌡️ Temp: {item.weatherData.temp}</p>
@@ -120,29 +115,25 @@ export default function HistoryPage() {
 						)}
 
 						{item.forecast?.length > 0 && (
-							<div style={{ marginTop: "1rem" }}>
+							<div className="forecast-list">
 								<strong>5-Day Forecast:</strong>
 								<ul>
-									{item.forecast.map((day, i) => (
-										<li key={i}>
-											{day.date} - {day.temperature}°C - {day.condition}
+									{item.forecast.map((day) => (
+										<li key={`${item._id}-${day.date}`}>
+											{day.date} – {day.temperature}°C – {day.condition}
 										</li>
 									))}
 								</ul>
 							</div>
 						)}
 
-						<div style={{ marginTop: "1rem" }}>
-							<button
-								onClick={() => handleEdit(item)}
-								className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
-							>
+						<div className="btn-row">
+							<button onClick={() => handleEdit(item)} className="btn-edit">
 								Edit
 							</button>
-
 							<button
 								onClick={() => handleDelete(item._id)}
-								className="px-3 py-1 rounded bg-red-600 text-white ml-3 hover:bg-red-700 transition"
+								className="btn-delete"
 							>
 								Delete
 							</button>

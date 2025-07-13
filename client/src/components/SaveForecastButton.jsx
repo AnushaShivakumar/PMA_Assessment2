@@ -44,7 +44,10 @@ const SaveForecastButton = ({ location, current, forecastday }) => {
 	};
 
 	return (
-		<button className="btn btn-primary mt-3" onClick={saveForecastToDatabase}>
+		<button
+			className="toggle-hourly-btn save-forecast-button"
+			onClick={saveForecastToDatabase}
+		>
 			Save Forecast
 		</button>
 	);
