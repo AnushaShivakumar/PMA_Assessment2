@@ -1,0 +1,504 @@
+/**
+ * BODY BACKGROUND DEFAULT
+ *
+ * @format
+ */
+
+body {
+	background-color: #213547;
+	transition: background-color 0.5s ease;
+}
+
+/* When expanded, change body background via JS class toggle */
+body.expanded-background {
+	background-color: #bdc3c7;
+}
+
+/* Add to App.css or global stylesheet */
+
+.page-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main-content {
+	flex: 1;
+}
+
+/* APP CONTAINER */
+.app-container {
+	max-width: 600px;
+
+	margin: 5rem auto;
+	padding: 1.5rem;
+	text-align: center;
+	font-family: "Segoe UI", sans-serif;
+	background-color: #bdc3c7;
+	color: white;
+	border-radius: 12px;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+	transition: all 0.5s ease;
+	min-height: auto;
+}
+
+/* EXPANDED CONTAINER */
+.app-container.expanded {
+	max-width: 100%;
+	margin: 0 auto;
+	border-radius: 0;
+	box-shadow: none;
+}
+/* When app expands */
+body.expanded-body {
+	background-color: #bdc3c7;
+}
+
+.weather-map-container {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	gap: 1.5rem;
+	margin: 2rem auto;
+	flex-wrap: wrap;
+	max-width: 1000px;
+	width: 100%;
+	height: 400px;
+}
+
+.weather-map-container > * {
+	flex: 1;
+	min-width: 300px;
+	max-width: 480px;
+	height: 100%;
+}
+
+/* Optional: If you want a wider forecast area without affecting container */
+.forecast-scroll {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	padding: 1rem;
+	transition: all 0.3s ease;
+}
+
+.forecast-card {
+	background-color: #213547;
+	color: white;
+	padding: 1rem;
+	border-radius: 12px;
+	min-width: 180px;
+	text-align: center;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.forecast-card:hover {
+	transform: translateY(-5px);
+	background-color: #2a415d;
+}
+
+/* Titles */
+.app-title {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #213547;
+}
+
+.section-title {
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin: 1.5rem 0 1rem;
+	color: #2f4350;
+}
+
+/* Button Layout */
+.button-row,
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.button-right-row {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 1.5rem;
+}
+
+/* Search Section */
+.search-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.search-bar-form {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Inputs */
+input[type="text"] {
+	padding: 0.6rem 1rem;
+	border-radius: 8px;
+	border: 1px solid #7f8c8d;
+	min-width: 220px;
+	background-color: #ecf0f1;
+	color: #2c3e50;
+}
+
+input[type="text"]::placeholder {
+	color: #95a5a6;
+}
+
+/* Weather Card */
+
+.weather-card {
+	background-color: #34495e;
+	color: white;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease-in-out;
+	flex: 1;
+	min-width: 300px;
+	/** Add this 👇 to match height */
+	height: 400px;
+	overflow: auto; /* just in case content overflows */
+}
+
+.weather-card:hover {
+	transform: translateY(-5px);
+}
+
+/* Weather Info Grid */
+.weather-stats {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	row-gap: 1rem;
+	column-gap: 2rem;
+	text-align: left;
+	margin-top: 1rem;
+}
+
+/* Weather Icon */
+.weather-icon {
+	margin-top: 1.5rem;
+}
+
+.weather-icon img {
+	width: 80px;
+	height: auto;
+}
+
+/* Condition Text */
+.weather-condition {
+	font-style: italic;
+	margin-bottom: 1rem;
+	font-size: 1.15rem;
+	color: #bdc3c7;
+}
+.map-view {
+	flex: 1;
+	min-width: 400px;
+	height: 400px;
+}
+
+.map-view iframe,
+.weather-card {
+	min-height: 200px;
+}
+.info-card {
+	flex: 1;
+	min-width: 300px;
+	border-radius: 12px;
+	padding: 2rem;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	background-color: #34495e;
+	color: white;
+}
+.weather-condition-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.weather-condition {
+	font-style: italic;
+	font-size: 1.15rem;
+	color: #bdc3c7;
+	margin: 0;
+}
+
+.weather-condition-icon {
+	width: 32px;
+	height: 32px;
+}
+.map-view iframe {
+	border: none;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	min-height: 400px;
+	width: 100%;
+	height: 100%;
+}
+.map-card {
+	background-color: #34495e;
+	padding: 1rem;
+	border-radius: 12px;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+}
+
+/* Buttons */
+/* UNIVERSAL BUTTON STYLE */
+button {
+	padding: 0.6rem 1.2rem;
+	background-color: #dee2e6;
+	color: #213547;
+	border: 2px #213547;
+	border-radius: 6px;
+	font-size: 1rem;
+	font-weight: 350;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+	transition: all 0.3s ease;
+}
+
+button:hover {
+	background-color: #213547;
+	color: white;
+	border: 2px #dee2e6;
+}
+
+/* Specific Button Customizations (optional) */
+.btn-primary {
+	background-color: #337eff;
+	color: #fff;
+	border: none;
+}
+
+.btn-primary:hover {
+	background-color: #1a65e0;
+}
+
+.btn-secondary {
+	background-color: #4b4b4b;
+	color: #fff;
+	border: none;
+}
+
+.btn-secondary:hover {
+	background-color: #2c2c2c;
+}
+
+/* Footer */
+.footer {
+	width: 100vw; /* Full viewport width */
+	background-color: #bdc3c7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.5rem 0;
+	border-top: 1px solid #ccc;
+	bottom: 0;
+	border: 2px solid #213547;
+	position: sticky;
+}
+
+.footer button {
+	padding: 0.6rem 1.2rem;
+	border: 2px solid #213547;
+
+	background-color: #213547;
+	color: #dee2e6;
+
+	border-radius: 12px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.footer button:hover {
+	background-color: #bdc3c7;
+	color: #213547;
+	border: 2px solid #213547;
+}
+.footer.expanded {
+	background-color: #213547;
+}
+
+.footer.expanded button {
+	background-color: #dee2e6;
+	color: #213547;
+}
+
+.footer.expanded button:hover {
+	background-color: #34495e;
+	color: #fff;
+	border: 2px solid #dee2e6;
+}
+
+/* Hourly forcaste */
+.hourly-forecast {
+	margin: 2rem auto;
+	padding: 1rem;
+	background-color: #34495e;
+	color: white;
+	border-radius: 12px;
+	max-width: 1000px;
+}
+
+.hourly-scroll {
+	display: flex;
+	overflow-x: auto;
+	gap: 1rem;
+	padding: 1rem 0;
+}
+
+.hour-card {
+	background-color: #213547;
+	border-radius: 8px;
+	padding: 1rem;
+	text-align: center;
+	min-width: 80px;
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.about-section {
+	background-color: #f1f1f1;
+	border-radius: 12px;
+	padding: 1.5rem;
+	margin: 1.5rem auto;
+	width: 90%;
+	max-width: 800px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h3 {
+	margin-bottom: 0.5rem;
+	color: #213547;
+}
+
+.about-modal {
+	position: fixed;
+	bottom: 90px; /* This places it above the footer */
+	right: 20px; /* This sticks it to the right */
+	background: #fff;
+	color: #213547;
+	border: 2px solid #213547;
+	border-radius: 12px;
+	padding: 1rem;
+	max-width: 300px;
+	z-index: 1000;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about-modal h2 {
+	margin-top: 0;
+}
+.about-modal ul {
+	padding-left: 1.2rem;
+}
+.about-modal button {
+	margin-top: 1rem;
+	padding: 0.4rem 1rem;
+	background: #213547;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+@media (max-width: 600px) {
+	.about-modal {
+		max-width: 90%;
+		left: 50%;
+		transform: translateX(-50%);
+		right: auto;
+	}
+}
+/* SAVED FORECAST MODAL */
+.saved-modal {
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	max-width: 800px;
+	background: #ffffff;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+	z-index: 1000;
+	color: #213547;
+}
+
+.saved-forecast-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.saved-forecast-card {
+	border: 1px solid #ccc;
+	padding: 1rem;
+	border-radius: 8px;
+	background: #f0f4f8;
+	color: #213547;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.saved-close-btn {
+	float: right;
+	background: #c0392b;
+	color: white;
+	border: none;
+	padding: 0.4rem 0.8rem;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.saved-close-btn:hover {
+	background: #e74c3c;
+}
+.history-page {
+	padding: 2rem;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.history-page input {
+	width: 100%;
+	padding: 0.4rem;
+	margin-bottom: 0.5rem;
+}
+.back-btn {
+	background-color: #213547;
+	color: white;
+	border: none;
+	padding: 0.6rem 1.2rem;
+	margin-bottom: 1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+.back-btn:hover {
+	background-color: #2f4350;
+}
