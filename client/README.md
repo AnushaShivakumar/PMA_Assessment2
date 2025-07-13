@@ -56,7 +56,7 @@ A full-stack weather application that allows users to search for weather, view a
 | Database             | MongoDB (Mongoose)         |
 | API Integration      | WeatherAPI, Google Maps    |
 | Deployment           | Vercel (Frontend), Render (Backend optional) |
-| Styling              | Custom CSS                 |
+| Styling              | CSS and Bootstrap          |
 | CRUD Functionality   | Full Create / Read / Update / Delete |
 
 ---
