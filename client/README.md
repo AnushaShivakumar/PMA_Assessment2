@@ -1,138 +1,122 @@
-<!-- @format -->
-
 # 🌤️ Weather Forecast App
 
-A sleek and interactive weather forecast application built with **React**, providing users with real-time weather updates, a 5-day forecast, and an optional hourly breakdown—powered by the WeatherAPI.
+A full-stack weather application that allows users to search for weather, view a forecast, and **save, edit, and delete** weather data. Built using **React, Node.js, Express, and MongoDB**, it supports **real-time API calls**, **map integration**, and **CRUD operations** via a database.
+
+👉 Live Demo: [https://pma-assessment2.vercel.app](https://pma-assessment2.vercel.app)
 
 ---
 
-## ✨ Features
+## ✅ What This App Can Do
 
-### 🌍 Location-Based Search
+### 🌍 Location-Based Weather Search
+- Users can enter **any city, town, or landmark**
+- Or choose to use **current location** via geolocation
 
-- 🔍 Search for any city or region.
-- 📍 Use your current location via geolocation for instant forecasts.
-
-### 📦 Real-Time Weather Details
-
-- 🌡️ Temperature (actual and feels-like)
-- 💧 Humidity
-- ☁️ Cloud cover
-- 🌬️ Wind speed and direction
-- ☀️ UV index
+### 📡 Real-Time Weather (via WeatherAPI)
+- Displays **temperature**, **humidity**, **conditions**, **wind speed**, and **UV index**
+- Enhanced with **weather icons** and emojis
 
 ### 📅 5-Day Forecast
+- Auto-fetched after each search
+- Shows **max/min temperatures**, **condition**, **rain chance**, and **wind**
 
-- Visually rich cards showing:
-  - Max & Min Temperatures
-  - Humidity
-  - Rain chance
-  - Wind speed
-  - Weather conditions with icons
+### 🕒 Hourly Forecast (Optional Toggle)
+- View hourly data for the current day
+- Toggle on/off for user preference
 
-### 🕒 Hourly Forecast (Toggle)
+### 💾 Forecast History (Persistent Storage with MongoDB)
+- **Save** forecasts with:
+  - Location
+  - Date range
+  - Summary weather data
+- **Read** all saved entries on the `/history` page
+- **Edit** temperature, humidity, and conditions
+- **Delete** any forecast entry
 
-- Toggle to display hourly weather for today.
-- Displays:
-  - Hourly temperature
-  - Weather condition icons
-  - Timestamp
+### 🗺️ Embedded Google Map
+- Shows approximate location of city searched
+- Fully responsive iframe
 
-### 🗺️ Interactive Map View
+### 📱 Responsive Design
+- Mobile & tablet friendly
+- Adjusts layout and card stacking on small screens
 
-- Embedded **Google Maps** preview of the forecast location.
-
-### 👩‍💻 About Sections
-
-- Buttons in the footer linking to:
-  - **About Me** (Developer Info)
-  - **About PMA** (Project/Motivation Overview)
-
-### 📜 History (UI Button in place)
-
-- Placeholder for future implementation of search history or previous forecasts.
-
-### 🎨 Responsive & Accessible Design
-
-- Clean, modern interface with soft gradients and dark card elements.
-- Fully responsive layout for desktop and mobile.
+### ℹ️ About Buttons
+- “About Me” button for developer info
+- “About PMA” button linking to company mission
 
 ---
 
-## 🚀 Getting Started
+## 🧠 Technical Highlights
 
-### Prerequisites
-
-- Node.js `>= 14`
-- WeatherAPI key ([Get one here](https://www.weatherapi.com/))
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/weather-forecast-app.git
-   cd weather-forecast-app
-   ```
-
-````
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Add your API Key**
-
-   Create a `.env` file in the root:
-
-   ```bash
-   VITE_WEATHER_API_KEY=your_api_key_here
-   ```
-
-4. **Start the development server**
-
-   ```bash
-   npm run dev
-   ```
+| Feature              | Tech Used                  |
+|----------------------|----------------------------|
+| Frontend             | React (Vite)               |
+| Backend              | Node.js + Express          |
+| Database             | MongoDB (Mongoose)         |
+| API Integration      | WeatherAPI, Google Maps    |
+| Deployment           | Vercel (Frontend), Render (Backend optional) |
+| Styling              | Custom CSS                 |
+| CRUD Functionality   | Full Create / Read / Update / Delete |
 
 ---
 
-## 🧠 Project Structure
+## 🧪 Use Case Example
 
-```
-src/
-├── components/
-│   ├── SearchBar.jsx
-│   ├── WeatherCard.jsx
-│   ├── ForecastList.jsx
-│   ├── HourlyForecast.jsx
-│   ├── MapView.jsx
-│   ├── InfoButton.jsx
-│   └── Footer.jsx
-├── services/
-│   └── weatherService.js
-├── App.jsx
-└── App.css
-```
+1. A user enters **“Seattle”**, selects a **5-day range**
+2. App shows:
+   - **Current weather**
+   - **5-day forecast**
+   - Optional hourly toggle
+   - Google Map preview
+3. User clicks **"Save Forecast"**
+4. Forecast is stored in **MongoDB**
+5. User can then:
+   - Go to **History**
+   - **Edit** the saved weather details
+   - **Delete** the forecast
 
 ---
+
+## 👩‍💻 Author
+
+**Anusha Shivakumar**  
+AI Engineer Intern Applicant  
+[GitHub](https://github.com/AnushaShivakumar) | [LinkedIn](https://www.linkedin.com/in/anusha-shivakumar/)
+
+---
+
+## 🏢 About PMA
+
+> PM Accelerator (PMA) is a learning accelerator designed to help future product managers and engineers learn practical, portfolio-ready skills. Learn more:  
+[🔗 PMA LinkedIn](https://www.linkedin.com/company/product-manager-accelerator)
+
+---
+
+## 🎬 Demo Video
+
+🎥 Link: [Insert Google Drive / Loom / YouTube video link here]
+
+---
+
+## 🌐 Deployment Links
+
+* **Frontend**: [https://pma-assessment2.vercel.app](https://pma-assessment2.vercel.app)
+* **GitHub Repo**: [https://github.com/AnushaShivakumar/PMA\_Assessment2](https://github.com/AnushaShivakumar/PMA_Assessment2)
+
+---
+
 
 ## 🛠️ Technologies Used
 
 * ⚛️ React (Vite)
+* 🌐 Express + Node.js
+* ☁️ MongoDB (Mongoose)
 * 📡 WeatherAPI
 * 🗺️ Google Maps Embed
-* 📦 CSS Modules / Vanilla CSS
-* 🧪 DevTools for debugging
+* 🎨 Tailwind / Custom CSS
+* 🌍 Vercel (Frontend Hosting)
+* 🧩 Axios, dotenv, CORS
 
 ---
 
-## 🙌 Author
-
-**Anusha Shiva Kumar**
-Frontend Developer passionate about clean design, responsive layouts, and intuitive UI/UX.
-\[LinkedIn] · \[GitHub] · \[Portfolio]
-
----
-````
