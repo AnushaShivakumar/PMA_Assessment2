@@ -58,7 +58,6 @@ export default function HistoryPage() {
 				</h2>
 				<div style={{ width: "120px" }} /> {/* For symmetry */}
 			</div>
-
 			<h2>📜 Saved Forecasts</h2>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
