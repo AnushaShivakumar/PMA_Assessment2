@@ -105,18 +105,3 @@ AI Engineer Intern Applicant
 * **GitHub Repo**: [https://github.com/AnushaShivakumar/PMA\_Assessment2](https://github.com/AnushaShivakumar/PMA_Assessment2)
 
 ---
-
-
-## 🛠️ Technologies Used
-
-* ⚛️ React (Vite)
-* 🌐 Express + Node.js
-* ☁️ MongoDB (Mongoose)
-* 📡 WeatherAPI
-* 🗺️ Google Maps Embed
-* 🎨 Tailwind / Custom CSS
-* 🌍 Vercel (Frontend Hosting)
-* 🧩 Axios, dotenv, CORS
-
----
-
