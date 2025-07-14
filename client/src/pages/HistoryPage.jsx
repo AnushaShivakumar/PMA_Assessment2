@@ -66,7 +66,7 @@ export default function HistoryPage() {
 					onClick={() =>
 						window.open(`${backendURL}/api/forecasts/export/pdf`, "_blank")
 					}
-					className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+					className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
 				>
 					⬇️ Export PDF
 				</button>
