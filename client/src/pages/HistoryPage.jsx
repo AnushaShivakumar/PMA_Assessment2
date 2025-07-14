@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+console.log("🚨 Deployed VITE_BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
 
 const backendURL = import.meta.env.VITE_BACKEND_URL || "";
 
