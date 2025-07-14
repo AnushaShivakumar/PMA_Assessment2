@@ -63,10 +63,7 @@ export default function HistoryPage() {
 				</button>
 				<button
 					onClick={() =>
-						window.open(
-							`${import.meta.env.VITE_API_BASE_URL}/api/weather/export/pdf`,
-							"_blank"
-						)
+						window.open(`${backendURL}/api/weather/export/pdf`, "_blank")
 					}
 				>
 					⬇️ Export PDF
