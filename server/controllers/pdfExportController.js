@@ -1,8 +1,7 @@
 /** @format */
 
-// controllers/pdfExportController.js
 import PDFDocument from "pdfkit";
-import Forecast from "../models/WeatherRecord.js"; // Adjust if your model has a different name
+import Forecast from "../models/Weather.js";
 
 export const exportForecastsToPDF = async (req, res) => {
 	try {
