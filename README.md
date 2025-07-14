@@ -135,3 +135,9 @@ PMA_Assessment2/
 * ⚙️ **.env files** — for secure API key and DB URI configuration
 
 ---
+## 🙋‍♀️ About Me
+
+**Anusha Shiva Kumar**
+
+Graduate Research Assistant • Passionate about Data Science & Full Stack Development
+[LinkedIn](https://linkedin.com/in/anusha-shiva-kumar) · [GitHub](https://github.com/your-username)
