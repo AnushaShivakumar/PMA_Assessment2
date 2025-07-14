@@ -11,7 +11,6 @@ import SaveForecastButton from "../components/SaveForecastButton";
 import Footer from "../components/Footer";
 import SavedForecasts from "../components/SavedForecasts";
 import { useNavigate } from "react-router-dom";
-
 import MapView from "../components/MapView";
 import "../App.css";
 
