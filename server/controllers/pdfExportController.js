@@ -1,7 +1,7 @@
 /** @format */
 
 import PDFDocument from "pdfkit";
-import Forecast from "../models/Forecast.js";
+import { Forecast } from "../models/Forecast.js";
 
 export const exportForecastsToPDF = async (req, res) => {
 	try {
