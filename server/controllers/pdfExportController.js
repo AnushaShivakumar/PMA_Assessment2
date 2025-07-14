@@ -1,11 +1,11 @@
 /** @format */
 
 import PDFDocument from "pdfkit";
-import { Forecast } from "../models/Forecast.js";
+import Forecast from "../models/Forecast.js";
 
 export const exportForecastsToPDF = async (req, res) => {
 	try {
-		const records = await Forecast.find().sort({ createdAt: -1 });
+		const forecasts = await Forecast.find().sort({ createdAt: -1 });
 
 		const doc = new PDFDocument();
 		const filename = "weather_forecasts.pdf";
@@ -19,14 +19,17 @@ export const exportForecastsToPDF = async (req, res) => {
 		doc.fontSize(20).text("📜 Saved Weather Forecasts", { underline: true });
 		doc.moveDown();
 
-		records.forEach((record, index) => {
-			const { location, dateRange, createdAt } = record;
+		forecasts.forEach((item, index) => {
+			const { location, dateRange, weatherData, createdAt } = item;
 
 			doc.fontSize(12).text(`📝 Record #${index + 1}`);
 			doc.text(`📍 Location: ${location}`);
-			doc.text(`📅 Start Date: ${new Date(dateRange.start).toLocaleString()}`);
-			doc.text(`📅 End Date: ${new Date(dateRange.end).toLocaleString()}`);
-			doc.text(`🕓 Created At: ${new Date(createdAt).toLocaleString()}`);
+			doc.text(`📅 Start: ${new Date(dateRange.start).toLocaleDateString()}`);
+			doc.text(`📅 End: ${new Date(dateRange.end).toLocaleDateString()}`);
+			doc.text(`🌡️ Temp: ${weatherData?.temp || "N/A"}`);
+			doc.text(`💧 Humidity: ${weatherData?.humidity || "N/A"}`);
+			doc.text(`🌤️ Condition: ${weatherData?.condition || "N/A"}`);
+			doc.text(`🕓 Saved At: ${new Date(createdAt).toLocaleString()}`);
 			doc.moveDown();
 		});
 

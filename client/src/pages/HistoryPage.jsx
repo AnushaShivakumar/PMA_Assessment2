@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-console.log("🚨 Deployed VITE_BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
 
 const backendURL = import.meta.env.VITE_BACKEND_URL || "";
 
@@ -62,10 +61,12 @@ export default function HistoryPage() {
 				>
 					← Go Back
 				</button>
+				<br></br>
 				<button
 					onClick={() =>
-						window.open(`${backendURL}/api/weather/export/pdf`, "_blank")
+						window.open(`${backendURL}/api/forecasts/export/pdf`, "_blank")
 					}
+					className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
 				>
 					⬇️ Export PDF
 				</button>
